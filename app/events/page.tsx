@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
+import Image from "next/image";
 
 export default function Events() {
   const upcomingEvents = [
@@ -12,6 +13,7 @@ export default function Events() {
       time: "6:00 PM - 8:00 PM UTC",
       location: "Online",
       attendees: 120,
+      image: "/images/react-workshop.jpg",
     },
     {
       id: 2,
@@ -20,6 +22,7 @@ export default function Events() {
       time: "All Day",
       location: "Online",
       attendees: 85,
+      image: "/images/web-dev-hackathon.jpg",
     },
     {
       id: 3,
@@ -28,6 +31,7 @@ export default function Events() {
       time: "7:00 PM - 9:00 PM UTC",
       location: "Online",
       attendees: 65,
+      image: "/images/tech-career-disc.jpg",
     },
   ];
 
@@ -97,8 +101,25 @@ export default function Events() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800"
               >
-                <div className="h-48 bg-emerald-400 dark:bg-emerald-600 flex items-center justify-center text-white">
-                  <span>{event.title}</span>
+                <div className="h-48 relative">
+                  {/* EVENT IMAGE PLACEHOLDER */}
+                  
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                   
+                  
+                  <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
+                    <div className="text-center p-4">
+                      <p className="font-medium">{event.title}</p>
+                      <p className="text-sm mt-2 opacity-80">Event image placeholder</p>
+                      <p className="text-xs mt-1 opacity-60">Replace with your image</p>
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{event.title}</h3>

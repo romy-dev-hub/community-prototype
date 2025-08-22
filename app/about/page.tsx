@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Users, Target, Heart, Globe } from "lucide-react";
+import Image from "next/image";
 
 export default function About() {
   const values = [
@@ -72,8 +73,22 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative h-80 rounded-2xl overflow-hidden"
           >
+            {/* IMAGE PLACEHOLDER */}
+            
+              <Image
+                src="/images/post2.jpg"  
+                alt="Community members collaborating"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            
             <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
-              <span className="text-center">Community Image</span>
+              <div className="text-center p-4">
+                <p className="text-lg font-medium">About Community Image</p>
+                <p className="text-sm mt-2 opacity-80">Replace with your image</p>
+                <p className="text-xs mt-1 opacity-60">Recommended: 800×600px</p>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -141,8 +156,18 @@ export default function About() {
                 className="text-center"
               >
                 <div className="w-32 h-32 mx-auto rounded-full bg-emerald-200 dark:bg-emerald-800 mb-4 overflow-hidden">
+                  {/* TEAM MEMBER IMAGE PLACEHOLDER - REPLACE WITH ACTUAL IMAGE */}
+                  
+                    <Image
+                      src={`/images/member-${item}.jpg`}  // Replace with your image path
+                      alt={`Team member ${item}`}
+                      width={128}
+                      height={128}
+                      className="object-cover"
+                    />
+                  
                   <div className="w-full h-full bg-emerald-400 dark:bg-emerald-600 flex items-center justify-center text-white">
-                    <span>Photo</span>
+                    <span className="text-sm">Team Photo</span>
                   </div>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Team Member {item}</h3>
