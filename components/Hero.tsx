@@ -21,8 +21,8 @@ export default function Hero() {
             Join our community of developers, designers, and tech enthusiasts. Share knowledge, collaborate on projects, and accelerate your career in a supportive environment.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a href="#join" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-6 py-3 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
-              Get Started Free
+            <a href="/login" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-6 py-3 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
+               Get Started Free
             </a>
             <a href="#features" className="inline-flex items-center rounded-xl bg-white dark:bg-gray-800 px-6 py-3 text-slate-900 dark:text-gray-300 shadow-sm ring-1 ring-slate-200 dark:ring-gray-700 hover:bg-slate-50 dark:hover:bg-gray-700 transition-colors">
               Explore Features
