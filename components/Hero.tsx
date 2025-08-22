@@ -29,12 +29,40 @@ export default function Hero() {
             </a>
           </div>
           <div className="mt-10 flex items-center gap-4">
-            <div className="flex -space-x-2">
-              {/* Replace with actual community member avatars */}
-              <div className="h-10 w-10 rounded-full bg-emerald-200 dark:bg-emerald-800 border-2 border-white dark:border-gray-900"></div>
-              <div className="h-10 w-10 rounded-full bg-emerald-300 dark:bg-emerald-700 border-2 border-white dark:border-gray-900"></div>
-              <div className="h-10 w-10 rounded-full bg-emerald-400 dark:bg-emerald-600 border-2 border-white dark:border-gray-900"></div>
+          <div className="flex -space-x-2">
+            {/* Avatar 1 */}
+            <div className="h-10 w-10 rounded-full bg-emerald-200 dark:bg-emerald-800 border-2 border-white dark:border-gray-900 overflow-hidden">
+                <Image
+                    src="/images/avatar1.jpg" 
+                    alt="Community member"
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                />
             </div>
+  
+            {/* Avatar 2  */}
+            <div className="h-10 w-10 rounded-full bg-emerald-300 dark:bg-emerald-700 border-2 border-white dark:border-gray-900 overflow-hidden">
+                <Image
+                   src="/images/avatar2.jpg" 
+                   alt="Community member"
+                   width={40}
+                   height={40}
+                   className="object-cover"
+                />
+            </div>
+  
+            {/* Avatar 3  */}
+            <div className="h-10 w-10 rounded-full bg-emerald-400 dark:bg-emerald-600 border-2 border-white dark:border-gray-900 overflow-hidden">
+                <Image
+                    src="/images/avatar3.jpg" // Replace with your image path
+                    alt="Community member"
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                />
+            </div>
+          </div>
             <p className="text-sm text-slate-600 dark:text-gray-400">
               Join <span className="font-semibold text-emerald-600 dark:text-emerald-400">2,500+</span> developers in our community
             </p>
