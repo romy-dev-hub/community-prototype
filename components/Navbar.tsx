@@ -6,6 +6,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Search } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 const links = [
 { href: "/", label: "Home" },
@@ -13,6 +14,13 @@ const links = [
 { href: "/events", label: "Events" },
 { href: "/about", label: "About" },
 ];
+
+//state and toggle function 
+const [isDark, setIsDark] = useState(false);
+const toggleDarkMode = () => {
+  setIsDark(!isDark);
+  document.documentElement.classList.toggle('dark');
+};
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -62,6 +70,13 @@ export default function Navbar() {
          onChange={(e) => console.log('Search:', e.target.value)} // Add search logic later
        />
     </div>
+    <button
+       aria-label="Toggle dark mode"
+       className="p-2 rounded-lg hover:bg-slate-100 mr-2"
+       onClick={toggleDarkMode}
+       >
+       {isDark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+    </button>
 
     {/* Mobile button */}
     <button
