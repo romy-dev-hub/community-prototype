@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
 
@@ -10,7 +12,6 @@ export default function Events() {
       time: "6:00 PM - 8:00 PM UTC",
       location: "Online",
       attendees: 120,
-      image: "/images/events/react-workshop.jpg", // Replace with your image
     },
     {
       id: 2,
@@ -19,7 +20,6 @@ export default function Events() {
       time: "All Day",
       location: "Online",
       attendees: 85,
-      image: "/images/events/hackathon.jpg", // Replace with your image
     },
     {
       id: 3,
@@ -28,7 +28,6 @@ export default function Events() {
       time: "7:00 PM - 9:00 PM UTC",
       location: "Online",
       attendees: 65,
-      image: "/images/events/career-panel.jpg", // Replace with your image
     },
   ];
 
@@ -99,7 +98,6 @@ export default function Events() {
                 className="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800"
               >
                 <div className="h-48 bg-emerald-400 dark:bg-emerald-600 flex items-center justify-center text-white">
-                  {/* Replace with event image */}
                   <span>{event.title}</span>
                 </div>
                 <div className="p-6">

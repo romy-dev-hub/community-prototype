@@ -1,4 +1,5 @@
-import Image from "next/image";
+'use client';
+
 import { motion } from "framer-motion";
 import { Users, Target, Heart, Globe } from "lucide-react";
 
@@ -71,13 +72,9 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative h-80 rounded-2xl overflow-hidden"
           >
-            <Image
-               src="/images/post1.jpg" // Replace with your image path
-               alt="Community members collaborating"
-               fill
-               className="object-cover"
-               sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
+              <span className="text-center">Community Image</span>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -144,7 +141,6 @@ export default function About() {
                 className="text-center"
               >
                 <div className="w-32 h-32 mx-auto rounded-full bg-emerald-200 dark:bg-emerald-800 mb-4 overflow-hidden">
-                  {/* Replace with team member image */}
                   <div className="w-full h-full bg-emerald-400 dark:bg-emerald-600 flex items-center justify-center text-white">
                     <span>Photo</span>
                   </div>
