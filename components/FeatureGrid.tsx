@@ -23,14 +23,15 @@ return (
 
 <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 {features.map((f, i) => (
-<motion.div
-key={f.title}
-initial={{ y: 20, opacity: 0 }}
-whileInView={{ y: 0, opacity: 1 }}
-viewport={{ once: true, amount: 0.2 }}
-transition={{ duration: 0.45, delay: i * 0.05 }}
-className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
->
+    <motion.div
+      key={f.title}
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, delay: i * 0.1 }} // Staggered delay
+      className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow"
+    >
 <div className="flex items-center gap-4">
 <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
 <f.icon className="h-6 w-6" />
