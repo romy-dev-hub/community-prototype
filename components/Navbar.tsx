@@ -18,37 +18,24 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme based on localStorage or system preference
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    const initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
     
     setIsDark(initialDark);
-    if (initialDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    document.documentElement.classList.toggle('dark', initialDark);
   }, []);
 
-  // Toggle dark mode and save to localStorage
   const toggleDarkMode = () => {
-    setIsDark((prev) => {
-      const newDark = !prev;
-      if (newDark) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-      return newDark;
-    });
+    const newDark = !isDark;
+    setIsDark(newDark);
+    localStorage.setItem('theme', newDark ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', newDark);
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-700">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <motion.div 
           initial={{ y: -10, opacity: 0 }} 
@@ -56,28 +43,27 @@ export default function Navbar() {
           transition={{ duration: 0.35 }}
         >
           <Link href="/" className="flex items-center gap-2">
-            <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500" />
-            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">CommunityHub</span>
+            <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600" />
+            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">DevCommunity</span>
           </Link>
         </motion.div>
 
-        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {links.map((l) => {
             const active = pathname === l.href;
             return (
               <div key={l.href} className="relative">
-                <Link href={l.href} className={`transition-colors ${active ? "text-blue-600 dark:text-blue-400" : "text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"}`}>
+                <Link href={l.href} className={`transition-colors ${active ? "text-emerald-600 dark:text-emerald-400" : "text-slate-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"}`}>
                   {l.label}
                 </Link>
                 {active && (
-                  <motion.span layoutId="nav-underline" className="absolute left-0 -bottom-1 h-0.5 w-full bg-blue-600 dark:bg-blue-400" />
+                  <motion.span layoutId="nav-underline" className="absolute left-0 -bottom-1 h-0.5 w-full bg-emerald-600 dark:bg-emerald-400" />
                 )}
               </div>
             );
           })}
-          <Link href="#join" className="inline-flex items-center rounded-xl bg-blue-600 dark:bg-blue-500 px-4 py-2 text-white shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
-            Join
+          <Link href="#join" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
+            Join Now
           </Link>
           <button
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -88,7 +74,6 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile button */}
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -99,21 +84,20 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden border-t border-slate-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+            className="md:hidden border-t border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900"
           >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-3">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="py-2 text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  className="py-2 text-slate-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
@@ -121,10 +105,10 @@ export default function Navbar() {
               ))}
               <Link
                 href="#join"
-                className="mt-2 inline-flex w-full justify-center rounded-xl bg-blue-600 dark:bg-blue-500 px-4 py-2 text-white shadow hover:bg-blue-700 dark:hover:bg-blue-600"
+                className="mt-2 inline-flex w-full justify-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600"
                 onClick={() => setOpen(false)}
               >
-                Join
+                Join Now
               </Link>
               <button
                 aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}

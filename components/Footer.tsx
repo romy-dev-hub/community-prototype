@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -12,26 +13,65 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-8 bg-gray-800 dark:bg-gray-950 text-gray-300 dark:text-gray-200 text-center">
-      <div className="max-w-6xl mx-auto px-4">
-        <form onSubmit={handleSubmit} className="mb-6">
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Subscribe to our newsletter"
-            className="px-4 py-2 rounded-l-lg bg-gray-700 dark:bg-gray-900 text-white dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <button type="submit" className="px-4 py-2 bg-blue-600 dark:bg-blue-500 rounded-r-lg hover:bg-blue-700 dark:hover:bg-blue-600 text-white">
-            Subscribe
-          </button>
-        </form>
-        <div className="flex justify-center gap-4 mb-4">
-          <a href="#" className="hover:text-white dark:hover:text-blue-400">Twitter</a>
-          <a href="#" className="hover:text-white dark:hover:text-blue-400">LinkedIn</a>
-          <a href="#" className="hover:text-white dark:hover:text-blue-400">GitHub</a>
+    <footer className="py-12 bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600" />
+              <span className="text-xl font-bold text-white">DevCommunity</span>
+            </div>
+            <p className="max-w-xs text-sm mb-6">
+              A community platform for developers to connect, learn, and grow together through collaboration and knowledge sharing.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Github className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Mail className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+          
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Community</h3>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="hover:text-white transition-colors">Events</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Discussions</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Projects</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Members</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Resources</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Stay Updated</h3>
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                required
+              />
+              <button type="submit" className="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-lg text-white font-medium transition-colors">
+                Subscribe
+              </button>
+            </form>
+          </div>
         </div>
-        <p>&copy; {new Date().getFullYear()} Community Website. All rights reserved.</p>
+        
+        <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-center text-gray-400">
+          <p>&copy; {new Date().getFullYear()} DevCommunity. All rights reserved.</p>
+        </div>
       </div>
     </footer>
   );

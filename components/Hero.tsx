@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gray-100 dark:bg-gray-900">
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
+    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-gray-900 dark:to-gray-800 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -14,19 +14,30 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="order-2 lg:order-1"
         >
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
-            Build, Learn & Grow Together
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
+            Connect, Learn & Grow Together
           </h1>
-          <p className="mt-4 text-lg text-slate-600 dark:text-gray-300 max-w-prose">
-            Welcome to <span className="font-semibold">CommunityHub</span>, a place where developers share knowledge, showcase projects, and support each other.
+          <p className="mt-6 text-lg text-slate-600 dark:text-gray-300 max-w-prose">
+            Join our community of developers, designers, and tech enthusiasts. Share knowledge, collaborate on projects, and accelerate your career in a supportive environment.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a href="#join" className="inline-flex items-center rounded-xl bg-blue-600 dark:bg-blue-500 px-5 py-3 text-white shadow hover:bg-blue-700 dark:hover:bg-blue-600">
-              Join the Community
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a href="#join" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-6 py-3 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
+              Get Started Free
             </a>
-            <a href="#latest" className="inline-flex items-center rounded-xl bg-white dark:bg-gray-800 px-5 py-3 text-slate-900 dark:text-gray-300 shadow-sm ring-1 ring-slate-200 dark:ring-gray-700 hover:bg-slate-50 dark:hover:bg-gray-700">
-              See What's New
+            <a href="#features" className="inline-flex items-center rounded-xl bg-white dark:bg-gray-800 px-6 py-3 text-slate-900 dark:text-gray-300 shadow-sm ring-1 ring-slate-200 dark:ring-gray-700 hover:bg-slate-50 dark:hover:bg-gray-700 transition-colors">
+              Explore Features
             </a>
+          </div>
+          <div className="mt-10 flex items-center gap-4">
+            <div className="flex -space-x-2">
+              {/* Replace with actual community member avatars */}
+              <div className="h-10 w-10 rounded-full bg-emerald-200 dark:bg-emerald-800 border-2 border-white dark:border-gray-900"></div>
+              <div className="h-10 w-10 rounded-full bg-emerald-300 dark:bg-emerald-700 border-2 border-white dark:border-gray-900"></div>
+              <div className="h-10 w-10 rounded-full bg-emerald-400 dark:bg-emerald-600 border-2 border-white dark:border-gray-900"></div>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-gray-400">
+              Join <span className="font-semibold text-emerald-600 dark:text-emerald-400">2,500+</span> developers in our community
+            </p>
           </div>
         </motion.div>
         <motion.div
@@ -36,14 +47,10 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="relative aspect-[16/11] order-1 lg:order-2"
         >
-          <Image
-            src="/images/hero.jpg"
-            alt="Community working together"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="rounded-3xl object-cover shadow-xl"
-            priority
-          />
+          {/* Replace with actual hero image */}
+          <div className="w-full h-full rounded-3xl bg-gradient-to-r from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 shadow-xl flex items-center justify-center">
+            <span className="text-white text-lg font-medium">Community Collaboration Image</span>
+          </div>
         </motion.div>
       </div>
     </section>

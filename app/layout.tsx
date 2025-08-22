@@ -4,8 +4,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Community Website",
-  description: "A community hub built with Next.js and Tailwind",
+  title: "DevCommunity - Connect, Learn & Grow Together",
+  description: "Join our community of developers to share knowledge, collaborate on projects, and accelerate your career.",
 };
 
 export default function RootLayout({
@@ -14,10 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+    <html lang="en" className="scroll-smooth">
+      <body className="font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors">
         <Navbar />
-        {children}
+        <main>
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
