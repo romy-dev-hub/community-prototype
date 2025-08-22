@@ -49,7 +49,7 @@ export default function PostsList() {
               <div className="p-4">
                 <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <a href="#" className="text-blue-600 font-medium hover:underline">
+                <a href={`/post/${post.id}`} className="text-blue-600 font-medium hover:underline">
                   Read more →
                 </a>
               </div>

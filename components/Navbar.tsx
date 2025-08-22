@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Search } from 'lucide-react';
 
 const links = [
 { href: "/", label: "Home" },
@@ -51,6 +52,15 @@ export default function Navbar() {
       <Link href="#join" className="inline-flex items-center rounded-xl bg-blue-600 px-4 py-2 text-white shadow hover:bg-blue-700 transition-colors">
         Join
       </Link>
+    </div>
+    <div className="hidden md:flex items-center relative">
+       <Search className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+       <input
+         type="text"
+         placeholder="Search posts..."
+         className="pl-10 pr-4 py-2 rounded-lg bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+         onChange={(e) => console.log('Search:', e.target.value)} // Add search logic later
+       />
     </div>
 
     {/* Mobile button */}
