@@ -17,10 +17,10 @@ export default function CallToAction() {
           Connect, learn, and grow with like-minded developers and enthusiasts.
         </p>
         <a
-          href="#"
+          href="https://discord.gg/your-community-link" // Replace with actual link
           className="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100"
-        >
-          Get Started
+          >
+          Join on Discord
         </a>
       </motion.div>
     </section>
