@@ -39,7 +39,7 @@ transition={{ duration: 0.6 }}
 className="relative aspect-[16/11] order-1 lg:order-2"
 >
 <Image
-src="/hero-image.jpg"
+src="/images/hero.jpg"
 alt="Community working together"
 fill
 className="rounded-3xl object-cover shadow-xl"
