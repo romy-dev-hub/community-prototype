@@ -49,6 +49,13 @@ export default function Hero() {
         >
           {/* Replace with actual hero image */}
           <div className="w-full h-full rounded-3xl bg-gradient-to-r from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 shadow-xl flex items-center justify-center">
+            <Image
+              src="/images/hero.jpg"
+              alt="Community Collaboration"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-3xl"
+            />
             <span className="text-white text-lg font-medium">Community Collaboration Image</span>
           </div>
         </motion.div>
