@@ -26,9 +26,9 @@ export default function PostsList() {
   ];
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">Community Posts</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white">Community Posts</h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <motion.div
@@ -37,7 +37,7 @@ export default function PostsList() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               viewport={{ once: true }}
-              className="rounded-2xl shadow-lg overflow-hidden bg-white"
+              className="rounded-2xl shadow-lg overflow-hidden bg-white dark:bg-gray-800"
             >
               <Image
                 src={post.image}
@@ -47,9 +47,9 @@ export default function PostsList() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <a href={`/post/${post.id}`} className="text-blue-600 font-medium hover:underline">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{post.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
+                <a href="#" className="text-blue-600 dark:text-blue-400 font-medium hover:underline">
                   Read more →
                 </a>
               </div>

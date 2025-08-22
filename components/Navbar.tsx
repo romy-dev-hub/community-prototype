@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react"; // Add useEffect
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
@@ -16,29 +16,35 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false); // State for dark mode
+  const [isDark, setIsDark] = useState(false);
 
-  // Sync dark mode with system preference and toggle
+  // Initialize theme based on localStorage or system preference
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('theme') === 'dark' || 
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    setIsDark(isDarkMode);
-    if (isDarkMode) {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    setIsDark(initialDark);
+    if (initialDark) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
   }, []);
 
+  // Toggle dark mode and save to localStorage
   const toggleDarkMode = () => {
-    setIsDark(!isDark);
-    if (!isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+    setIsDark((prev) => {
+      const newDark = !prev;
+      if (newDark) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+      return newDark;
+    });
   };
 
   return (
@@ -50,7 +56,7 @@ export default function Navbar() {
           transition={{ duration: 0.35 }}
         >
           <Link href="/" className="flex items-center gap-2">
-            <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-sm dark:from-blue-400 dark:to-indigo-500" />
+            <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 dark:from-blue-400 dark:to-indigo-500" />
             <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">CommunityHub</span>
           </Link>
         </motion.div>
@@ -73,7 +79,6 @@ export default function Navbar() {
           <Link href="#join" className="inline-flex items-center rounded-xl bg-blue-600 dark:bg-blue-500 px-4 py-2 text-white shadow hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
             Join
           </Link>
-          {/* Dark mode toggle */}
           <button
             aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800"
@@ -123,7 +128,7 @@ export default function Navbar() {
               </Link>
               <button
                 aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                className="mt-2 inline-flex w-full justify-center rounded-xl bg-gray-100 dark:bg-gray-800 px-4 py-2 text-slate-700 dark:text-gray-300"
+                className="mt-2 inline-flex w-full justify-center rounded-xl bg-gray-100 dark:bg-gray-800 px-4 py-2 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700"
                 onClick={() => {
                   toggleDarkMode();
                   setOpen(false);
