@@ -22,9 +22,9 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-white dark:bg-gray-900">
       <div className="max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-3xl font-bold mb-8">What People Say</h2>
+        <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">What People Say</h2>
         <div className="grid gap-8 md:grid-cols-2">
           {testimonials.map((t) => (
             <motion.div
@@ -33,7 +33,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               viewport={{ once: true }}
-              className="p-6 rounded-xl shadow-lg bg-gray-50"
+              className="p-6 rounded-xl shadow-lg bg-gray-50 dark:bg-gray-800"
             >
               <Image
                 src={t.avatar}
@@ -42,9 +42,9 @@ export default function Testimonials() {
                 height={80}
                 className="mx-auto rounded-full mb-4"
               />
-              <p className="text-gray-600 mb-4 italic">"{t.feedback}"</p>
-              <h4 className="font-semibold">{t.name}</h4>
-              <span className="text-sm text-gray-500">{t.role}</span>
+              <p className="text-gray-700 dark:text-gray-300 mb-4 italic">"{t.feedback}"</p>
+              <h4 className="font-semibold text-gray-900 dark:text-white">{t.name}</h4>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{t.role}</span>
             </motion.div>
           ))}
         </div>
