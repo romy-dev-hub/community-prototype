@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const links = [
@@ -17,57 +17,9 @@ const links = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // After mounting, we can show the UI to avoid hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-    
-    // Check for saved theme preference or use system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
-    } else {
-      setIsDark(systemPrefersDark);
-      document.documentElement.classList.toggle('dark', systemPrefersDark);
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDark = !isDark;
-    setIsDark(newDark);
-    localStorage.setItem('theme', newDark ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', newDark);
-  };
-
-  // Avoid rendering theme-dependent UI until mounted
-  if (!mounted) {
-    return (
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
-        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="h-15 w-15 relative">
-              <Image
-                src="/images/logo.png" 
-                alt="DevCommunity Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">DevCommunity</span>
-          </Link>
-          <div className="h-6 w-6"></div> {/* Placeholder for theme toggle */}
-        </nav>
-      </header>
-    );
-  }
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
+    <header className="sticky top-0 z-50 dark:bg-gray-800 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-800/60 border-b border-slate-200 dark:border-gray-800">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <motion.div 
           initial={{ y: -10, opacity: 0 }} 
@@ -83,7 +35,7 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">DevCommunity</span>
+            <span className="text-xl font-bold tracking-tight text-white">DevCommunity</span>
           </Link>
         </motion.div>
 
@@ -92,34 +44,27 @@ export default function Navbar() {
             const active = pathname === l.href;
             return (
               <div key={l.href} className="relative">
-                <Link href={l.href} className={`transition-colors ${active ? "text-emerald-600 dark:text-emerald-400" : "text-slate-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"}`}>
+                <Link href={l.href} className={`transition-colors ${active ? "text-emerald-600" : "text-white hover:text-emerald-600"}`}>
                   {l.label}
                 </Link>
                 {active && (
-                  <motion.span layoutId="nav-underline" className="absolute left-0 -bottom-1 h-0.5 w-full bg-emerald-600 dark:bg-emerald-400" />
+                  <motion.span layoutId="nav-underline" className="absolute left-0 -bottom-1 h-0.5 w-full bg-emerald-600" />
                 )}
               </div>
             );
           })}
-          <Link href="/login" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
+          <Link href="/login" className="inline-flex items-center rounded-xl bg-emerald-600 px-4 py-2 text-white shadow hover:bg-emerald-700 transition-colors">
             Join Now
           </Link>
-          <button
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800"
-            onClick={toggleDarkMode}
-          >
-            {isDark ? <Sun className="h-6 w-6 text-yellow-400" /> : <Moon className="h-6 w-6 text-slate-700" />}
-          </button>
         </div>
 
         <button
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800"
+          className="md:hidden p-2 rounded-lg hover:bg-slate-100"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X className="h-6 w-6 text-gray-900 dark:text-gray-300" /> : <Menu className="h-6 w-6 text-gray-900 dark:text-gray-300" />}
+          {open ? <X className="h-6 w-6 text-gray-900" /> : <Menu className="h-6 w-6 text-gray-900" />}
         </button>
       </nav>
 
@@ -129,14 +74,14 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden border-t border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900"
+            className="md:hidden border-t border-slate-200 bg-white"
           >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-3">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="py-2 text-slate-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400"
+                  className="py-2 text-slate-700 hover:text-emerald-600"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
@@ -144,22 +89,11 @@ export default function Navbar() {
               ))}
               <Link
                 href="/login"
-                className="mt-2 inline-flex w-full justify-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600"
+                className="mt-2 inline-flex w-full justify-center rounded-xl bg-emerald-600 px-4 py-2 text-white shadow hover:bg-emerald-700"
                 onClick={() => setOpen(false)}
               >
                 Join Now
               </Link>
-              <button
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                className="mt-2 inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gray-100 dark:bg-gray-800 px-4 py-2 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700"
-                onClick={() => {
-                  toggleDarkMode();
-                  setOpen(false);
-                }}
-              >
-                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-              </button>
             </div>
           </motion.div>
         )}

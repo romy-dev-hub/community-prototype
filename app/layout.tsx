@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className="font-sans antialiased bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 transition-colors">
+    <html lang="en" className="scroll-smooth">
+      <body className="font-sans antialiased bg-white text-gray-900">
         <Navbar />
         <main>
           {children}
