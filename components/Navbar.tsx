@@ -45,7 +45,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2">
             {/* Logo Image  */}
-            <div className="h-8 w-8 relative">
+            <div className="h-15 w-15 relative">
               <Image
                 src="/images/logo.png" 
                 alt="DevCommunity Logo"

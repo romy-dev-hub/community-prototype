@@ -20,7 +20,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               {/* Logo Image */}
-              <div className="h-8 w-8 relative">
+              <div className="h-12 w-12 relative">
                 <Image
                   src="/images/logo.png"
                   alt="DevCommunity Logo"

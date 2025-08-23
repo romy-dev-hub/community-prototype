@@ -41,7 +41,7 @@ export default function Login() {
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 mb-4">
               {/* Logo Image */}
-              <div className="h-8 w-8 relative">
+              <div className="h-25 w-25 relative">
                 <Image
                   src="/images/logo.png" 
                   alt="DevCommunity Logo"
