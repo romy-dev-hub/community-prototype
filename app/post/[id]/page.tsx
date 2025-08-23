@@ -9,6 +9,13 @@ const posts = [
   { id: '3', title: 'Upcoming Events', content: 'Full content here...', image: '/images/post3.jpg' },
 ];
 
+// Add this function for static export
+export async function generateStaticParams() {
+  return posts.map((post) => ({
+    id: post.id,
+  }));
+}
+
 export default function PostPage({ params }: { params: { id: string } }) {
   const post = posts.find((p) => p.id === params.id);
   if (!post) notFound();
