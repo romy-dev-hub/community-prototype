@@ -18,14 +18,23 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // After mounting, we can show the UI to avoid hydration mismatch
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+    setMounted(true);
     
-    setIsDark(initialDark);
-    document.documentElement.classList.toggle('dark', initialDark);
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme) {
+      setIsDark(savedTheme === 'dark');
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+    } else {
+      setIsDark(systemPrefersDark);
+      document.documentElement.classList.toggle('dark', systemPrefersDark);
+    }
   }, []);
 
   const toggleDarkMode = () => {
@@ -34,6 +43,28 @@ export default function Navbar() {
     localStorage.setItem('theme', newDark ? 'dark' : 'light');
     document.documentElement.classList.toggle('dark', newDark);
   };
+
+  // Avoid rendering theme-dependent UI until mounted
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
+        <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="h-15 w-15 relative">
+              <Image
+                src="/images/logo.png" 
+                alt="DevCommunity Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">DevCommunity</span>
+          </Link>
+          <div className="h-6 w-6"></div> {/* Placeholder for theme toggle */}
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
@@ -44,7 +75,6 @@ export default function Navbar() {
           transition={{ duration: 0.35 }}
         >
           <Link href="/" className="flex items-center gap-2">
-            {/* Logo Image  */}
             <div className="h-15 w-15 relative">
               <Image
                 src="/images/logo.png" 
@@ -79,7 +109,7 @@ export default function Navbar() {
             className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-gray-800"
             onClick={toggleDarkMode}
           >
-            {isDark ? <Sun className="h-6 w-6 text-gray-300" /> : <Moon className="h-6 w-6 text-slate-700" />}
+            {isDark ? <Sun className="h-6 w-6 text-yellow-400" /> : <Moon className="h-6 w-6 text-slate-700" />}
           </button>
         </div>
 
@@ -121,12 +151,13 @@ export default function Navbar() {
               </Link>
               <button
                 aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                className="mt-2 inline-flex w-full justify-center rounded-xl bg-gray-100 dark:bg-gray-800 px-4 py-2 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700"
+                className="mt-2 inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gray-100 dark:bg-gray-800 px-4 py-2 text-slate-700 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-700"
                 onClick={() => {
                   toggleDarkMode();
                   setOpen(false);
                 }}
               >
+                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 {isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               </button>
             </div>
