@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -18,7 +19,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600" />
+              {/* Logo Image */}
+              <div className="h-8 w-8 relative">
+                <Image
+                  src="/images/logo.png"
+                  alt="DevCommunity Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <span className="text-xl font-bold text-white">DevCommunity</span>
             </div>
             <p className="max-w-xs text-sm mb-6">
@@ -43,11 +52,11 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-white mb-4">Community</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Events</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Discussions</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Projects</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Members</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Resources</a></li>
+              <li><a href="/community" className="hover:text-white transition-colors">Events</a></li>
+              <li><a href="/community" className="hover:text-white transition-colors">Discussions</a></li>
+              <li><a href="/community" className="hover:text-white transition-colors">Projects</a></li>
+              <li><a href="/community" className="hover:text-white transition-colors">Members</a></li>
+              <li><a href="/community" className="hover:text-white transition-colors">Resources</a></li>
             </ul>
           </div>
           

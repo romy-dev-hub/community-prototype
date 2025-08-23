@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -43,7 +44,15 @@ export default function Navbar() {
           transition={{ duration: 0.35 }}
         >
           <Link href="/" className="flex items-center gap-2">
-            <span className="inline-block h-8 w-8 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600" />
+            {/* Logo Image  */}
+            <div className="h-8 w-8 relative">
+              <Image
+                src="/images/logo.png" 
+                alt="DevCommunity Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
             <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">DevCommunity</span>
           </Link>
         </motion.div>
@@ -62,7 +71,7 @@ export default function Navbar() {
               </div>
             );
           })}
-          <Link href="#join" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
+          <Link href="/login" className="inline-flex items-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors">
             Join Now
           </Link>
           <button
@@ -104,7 +113,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="#join"
+                href="/login"
                 className="mt-2 inline-flex w-full justify-center rounded-xl bg-emerald-600 dark:bg-emerald-500 px-4 py-2 text-white shadow hover:bg-emerald-700 dark:hover:bg-emerald-600"
                 onClick={() => setOpen(false)}
               >
