@@ -9,11 +9,9 @@ const posts = [
   { id: '3', title: 'Upcoming Events', content: 'Full content here...', image: '/images/post3.jpg' },
 ];
 
-// Add this function for static export
+// ADD THIS ONE FUNCTION - 3 lines of code!
 export async function generateStaticParams() {
-  return posts.map((post) => ({
-    id: post.id,
-  }));
+  return posts.map((post) => ({ id: post.id }));
 }
 
 export default function PostPage({ params }: { params: { id: string } }) {
