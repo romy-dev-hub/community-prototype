@@ -116,8 +116,6 @@ export default function Events() {
                   <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
                     <div className="text-center p-4">
                       <p className="font-medium">{event.title}</p>
-                      <p className="text-sm mt-2 opacity-80">Event image placeholder</p>
-                      <p className="text-xs mt-1 opacity-60">Replace with your image</p>
                     </div>
                   </div>
                 </div>
