@@ -31,12 +31,25 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 pt-20 flex items-center justify-center px-4">
-      <div className="max-w-md w-full">
+      {/* Background GIF */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/background.gif" 
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Overlay for better readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+
+      <div className="max-w-md w-full z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8"
+          className="bg-white/70 dark:bg-gray-900/70 rounded-2xl shadow-lg p-8 backdrop-blur-md border border-white/20"
         >
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 mb-4">
