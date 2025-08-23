@@ -47,7 +47,7 @@ export default function Navbar() {
   // Avoid rendering theme-dependent UI until mounted
   if (!mounted) {
     return (
-      <header className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60 border-b border-slate-200 dark:border-gray-800">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="h-15 w-15 relative">
@@ -58,7 +58,7 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">DevCommunity</span>
+            <span className="text-xl font-bold tracking-tight text-gray-900">DevCommunity</span>
           </Link>
           <div className="h-6 w-6"></div> {/* Placeholder for theme toggle */}
         </nav>
