@@ -13,7 +13,7 @@ export default function CallToAction() {
         className="max-w-3xl mx-auto px-4"
       >
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">Ready to Join Our Community?</h2>
-        <p className="mb-8 text-lg opacity-90">Join thousands of developers growing together. It's free and always will be.</p>
+        <p className="mb-8 text-lg opacity-90">Join thousands of developers growing together. It&apos;s free and always will be.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#"

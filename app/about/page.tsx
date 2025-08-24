@@ -37,12 +37,13 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">About Our Community</h1>
-            <p className="mt-4 text-lg text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
-              We're a global community of developers passionate about learning, sharing, and growing together.
-            </p>
+            <div className="text-center">
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">About Our Community</h1>
+              <p className="mt-4 text-lg text-slate-600 dark:text-gray-300 max-w-3xl mx-auto">
+                We&apos;re a global community of developers passionate about learning, sharing, and growing together.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -71,21 +72,22 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative h-80 rounded-2xl overflow-hidden"
           >
-            {/* IMAGE PLACEHOLDER */}
-            
-              <Image
-                src="/images/post2.jpg"  
-                alt="Community members collaborating"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            
-            <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
-              <div className="text-center p-4">
-                <p className="text-lg font-medium">About Community Image</p>
+            <div className="relative h-80 rounded-2xl overflow-hidden">
+              {/* IMAGE PLACEHOLDER */}
+              
+                <Image
+                  src="/images/post2.jpg"  
+                  alt="Community members collaborating"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              
+              <div className="w-full h-full bg-gradient-to-br from-emerald-400 to-green-500 dark:from-emerald-600 dark:to-green-700 flex items-center justify-center text-white">
+                <div className="text-center p-4">
+                  <p className="text-lg font-medium">About Community Image</p>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -100,12 +102,13 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Values</h2>
-            <p className="mt-4 text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
-              These core values guide everything we do as a community
-            </p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Our Values</h2>
+              <p className="mt-4 text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
+                These core values guide everything we do as a community
+              </p>
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -116,11 +119,12 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-sm"
               >
-                <value.icon className="h-12 w-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{value.title}</h3>
-                <p className="mt-2 text-slate-600 dark:text-gray-300">{value.description}</p>
+                <div className="text-center p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-sm">
+                  <value.icon className="h-12 w-12 text-emerald-600 dark:text-emerald-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{value.title}</h3>
+                  <p className="mt-2 text-slate-600 dark:text-gray-300">{value.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -130,18 +134,19 @@ export default function About() {
       {/* Team Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Meet Our Team</h2>
-            <p className="mt-4 text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
-              The passionate volunteers who keep our community running
-            </p>
-          </motion.div>
+          <div className="text-center mb-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Meet Our Team</h2>
+              <p className="mt-4 text-slate-600 dark:text-gray-300 max-w-2xl mx-auto">
+                The passionate volunteers who keep our community running
+              </p>
+            </motion.div>
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map((item, index) => (
@@ -151,7 +156,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
+                style={{ textAlign: "center" }}
               >
                 <div className="w-32 h-32 mx-auto rounded-full bg-emerald-200 dark:bg-emerald-800 mb-4 overflow-hidden">
                   {/* TEAM MEMBER IMAGE PLACEHOLDER - REPLACE WITH ACTUAL IMAGE */}
